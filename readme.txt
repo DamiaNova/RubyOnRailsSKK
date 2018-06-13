@@ -27,3 +27,9 @@ Pokretanje virtualnog okruženja za projekt:
 > workon skk
 Pokretanje razvojnog poslužitelja za projekt:
 > python manage.py runserver
+***********************************************************
+Problemi:
+-radi samo best-case scenario
+-neoptimiziran kod
+-nedostatak statičkih dokumenata (css,..)
+-nedostatak testova
