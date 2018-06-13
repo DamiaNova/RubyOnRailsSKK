@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<body>
+
+		<h1>OTKAZIVANJE</h1>
+		<p>Pozdav, {{ user.username }} ! </p>
+		<p>Ovo je početna stranica za otkazivanje karata.</p>
+		{% block content %}
+			{% if otkazivanje is True %}
+				<h2>Provjerite svoj odabir:</h2>
+				<table style="width:35%" border="0">
+					<tr>
+						<td><b>Datum</b></td>
+						<td><b>Polazak</b></td> 
+						<td><b>Dolazak</b></td>
+						<td><b>Broj kartice:</b></td>
+						<td><b>Cijena</b></td>
+					</tr>
+					<tr>
+						<td>{{karta.datum}}</td>
+						<td>{{karta.vrijemePol}}</td>
+						<td>{{karta.vrijemeDol}}</td>
+						<td>{{karta.brKartice}}</td>
+						<td>{{karta.cijena}} kn</td>
+					</tr>
+				</table>
+				<p>Želite li otkazati?</p>
+				<a href="{% url 'sustav:cancel' karta.id %}">OTKAŽI</a>
+				<br/>
+			{% else %}
+				<p>Nažalost, više niste u mogućnosti otkazati željenu kartu.</p>
+			{% endif %}
+		{% endblock %}
+		<a href="{% url 'sustav:pregled' %}">Povratak na pregled</a>
+	</body>
+</html>

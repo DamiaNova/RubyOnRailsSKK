@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<body>
+
+		<h1>POČETNA</h1>
+		<h2>Pozdav, {{ user.username }} ! </h2>
+		<p>Ovo je početna stranica za registrirane korisnike.</p>
+		<br/>
+		<a href="{% url 'sustav:voznired' %}">Vozni red!</a>
+		<br/>
+		<a href="{% url 'sustav:pregled' %}">Pregled kupljenih karata!</a>
+		<br/>
+		<a href="{% url 'prijava:odjava' %}">Odjava!</a>
+		<br/>
+
+
+	</body>
+</html>

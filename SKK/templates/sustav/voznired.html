@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<body>
+
+		<h1>Vozni red:</h1>
+		<p>Ovdje možete vidjeti vozni red za registrirane/prijavljene korisnike! :) </p>
+		<p> Pozdav, {{ user.username }} </p>
+		<h2>Zagreb glavni kolodvor --- Bjelovar</h2>
+		<table style="width:35%" border="0">
+		    <tr>
+				<td><b>Datum</b></td>
+				<td><b>Polazak</b></td> 
+				<td><b>Dolazak</b></td>
+				<td><b>Broj karata</b></td>
+				<td><b>Cijena</b></td>
+			</tr>
+			{% for podatak in vozni_red %}
+				{% if  podatak.datum >= danasnjidatum %}
+					<tr>
+						<td>{{podatak.datum}}</td>
+						<td>{{podatak.vrijemePol}}</td>
+						<td>{{podatak.vrijemeDol}}</td>
+						<td>{{podatak.brojKar}}</td>
+						<td>{{podatak.cijena}} kn</td>
+						<td>
+						{% if podatak.brojKar > 0 and podatak.datum != danasnjidatum%}
+							<a href="{% url 'sustav:kupovina' podatak.id %}">Kupi</a></td>
+						{% elif podatak.brojKar > 0 and podatak.datum == danasnjidatum and podatak.vrijemePol > trenutnovrijeme %}
+							<a href="{% url 'sustav:kupovina' podatak.id %}">Kupi</a></td>
+						{% else %}
+							</td>
+						{% endif %}
+					</tr>
+				{% endif %}
+			{% endfor %}
+		</table>
+		<br/>
+		<a href="{% url 'sustav:pocetna_reg' %}">Povratak na početnu stranicu</a>
+
+	</body>
+</html>

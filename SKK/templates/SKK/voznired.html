@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<body>
+
+		<h1>Vozni red:</h1>
+		<h2>Zagreb glavni kolodvor --- Bjelovar</h2>
+		<table style="width:35%" border="0">
+		    <tr>
+				<td><b>Datum</b></td>
+				<td><b>Polazak</b></td> 
+				<td><b>Dolazak</b></td>
+				<td><b>Broj karata</b></td>
+				<td><b>Cijena</b></td>
+			</tr>
+			{% for podatak in vozni_red %}
+			<tr>
+				<td>{{podatak.datum}}</td>
+				<td>{{podatak.vrijemePol}}</td>
+				<td>{{podatak.vrijemeDol}}</td>
+				<td>{{podatak.brojKar}}</td>
+				<td>{{podatak.cijena}} kn</td>
+			</tr>
+			{% endfor %}
+		</table>
+		<br/>
+		<a href="{% url 'home' %}">Povratak na početnu stranicu</a>
+
+	</body>
+</html>

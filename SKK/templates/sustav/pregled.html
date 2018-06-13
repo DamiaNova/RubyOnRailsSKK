@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<body>
+
+		<h1>Pregled karata za prijavljenog korisnika</h1>
+		<p> Pozdav, {{ user.username }} </p>
+		{% block content %}
+			{% if kupljena_karta is not None %}
+				<h3>Kupili ste sljedeću kartu:</h3>
+				<table style="width:30%">
+					<tr>
+						<th align="left"><b>Datum</b></th>
+						<th align="left"><b>Polazak</b></th> 
+						<th align="left"><b>Dolazak</b></th>
+						<th align="left"><b>Cijena</b></th>
+					</tr>
+					<tr>
+						<td>{{kupljena_karta.datum}}</td>
+						<td>{{kupljena_karta.vrijemePol}}</td>
+						<td>{{kupljena_karta.vrijemeDol}}</td>
+						<td>{{kupljena_karta.cijena}} kn</td>
+					<tr>
+				</table>
+			{% elif  kupljena_karta is False %}
+				<p>Nažalost, ponestalo je slobodnih mjesta za odabrani termin.</p>
+			{% else %}
+				<p></p>
+			{% endif %}
+		<h2> Popis svih kupljenih karata: </h2>
+			{% if lista_kupljenih_karata %}
+				<table style="width:50%">
+					<tr>
+						<th align="left"><b>Datum</b></th>
+						<th align="left"><b>Polazak</b></th> 
+						<th align="left"><b>Dolazak</b></th>
+						<th align="left"><b>Broj kartice</b></th>
+						<th align="left"><b>Cijena</b></th>
+					</tr>
+					{% for karte in lista_kupljenih_karata %}
+					<tr>
+						<td>{{karte.datum}}</td>
+						<td>{{karte.vrijemePol}}</td>
+						<td>{{karte.vrijemeDol}}</td>
+						<td>{{karte.brKartice}}</td>
+						<td>{{karte.cijena}} kn <a href="{% url 'sustav:otkazivanje' karte.id %}">Otkaži</a></td>
+					<tr>
+					{% endfor %}
+				</table>
+			{% else %}
+				<p>Niste kupiti niti jednu kartu.</p>
+			{% endif %}
+		{% endblock %}
+		<br/>
+		<a href="{% url 'sustav:pocetna_reg' %}">Povratak na početnu stranicu</a>
+		<br/>
+		<a href="{% url 'sustav:voznired' %}">Povratak na vozni red</a>
+	</body>
+</html>

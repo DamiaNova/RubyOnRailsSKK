@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<body>
+			<h1>Provjerite svoj odabir:</h1>
+			<table style="width:35%" border="0">
+				<tr>
+					<td><b>Datum</b></td>
+					<td><b>Polazak</b></td> 
+					<td><b>Dolazak</b></td>
+					<td><b>Cijena</b></td>
+				</tr>
+				<tr>
+					<td>{{vozni_red.datum}}</td>
+					<td>{{vozni_red.vrijemePol}}</td>
+					<td>{{vozni_red.vrijemeDol}}</td>
+					<td>{{vozni_red.cijena}} kn</td>
+				</tr>
+			</table>
+			<h2>Korisnički podaci:</h2>
+			<form method="post" action="{% url 'sustav:purchase' vozni_red.id %}">
+			{% csrf_token %}
+				<p>Korisničko ime: {{ user.username }}</p>
+				<p>E-mail: {{ user.email }}</p>
+				Broj kartice:<br>
+				<input id="brKartice" type="number" name="brKartice"/>
+				<input type="submit" value="Kupi" />
+			</form>
+			<br/>
+		<a href="{% url 'sustav:voznired' %}">Povratak na vozni red</a>
+	</body>
+</html>
