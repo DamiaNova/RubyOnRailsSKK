@@ -2,6 +2,7 @@
 Ruby on Rails Intern @ Ars Futura (zadatak-svibanj 2018.)
 ***********************************************************
 Administrator:
+
 Username: admin
 Password: pizza123
 ***********************************************************
